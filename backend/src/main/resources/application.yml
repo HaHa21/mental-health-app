@@ -26,7 +26,7 @@ moh:
     # Base URL for data.gov.my static file storage (CSV downloads)
     storage-base-url: https://storage.data.gov.my
     # Catalogue API for metadata lookup
-    api-base-url: https://api.data.gov.my
+    api-base-url: https://data.gov.my
   sync:
     cron: "0 0 2 * * *"
     freshness-threshold-hours: 24

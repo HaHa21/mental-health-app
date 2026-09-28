@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/mentalhealth}
+    username: ${SPRING_DATASOURCE_USERNAME:mhuser}
+    password: ${SPRING_DATASOURCE_PASSWORD:mhpassword}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+jwt:
+  secret: ${JWT_SECRET:change-me-in-production-use-a-long-random-string-here}
+  expiration-ms: 86400000   # 24 hours
+
+moh:
+  data:
+    # Base URL for data.gov.my static file storage (CSV downloads)
+    storage-base-url: https://storage.data.gov.my
+    # Catalogue API for metadata lookup
+    api-base-url: https://api.data.gov.my
+  sync:
+    cron: "0 0 2 * * *"
+    freshness-threshold-hours: 24
+  alert:
+    threshold: 0   # trigger on any increase vs. prior sync
